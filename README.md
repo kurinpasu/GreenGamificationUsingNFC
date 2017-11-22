@@ -1,4 +1,4 @@
-# 📱 iOS 11 NFC-Example
+# 📱 GreenGamification📱
 
 A quick example showing how to use the Core NFC API in iOS 11 and Swift 4.
 
@@ -182,3 +182,4 @@ If you are using a cross-platform solution for your application, [Appcelerator T
 
 ## Author
 Hans Knöchel ([@hansemannnn](https://twitter.com/hansemannnn))
+
