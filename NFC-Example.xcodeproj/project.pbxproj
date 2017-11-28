@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09492F221FCCF1B800239A23 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09492F211FCCF1B800239A23 /* Alamofire.framework */; };
+		09492F241FCCF1CD00239A23 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09492F231FCCF1CD00239A23 /* SwiftyJSON.framework */; };
 		DB856C3E1EE9751700DE4334 /* NFCTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB856C3D1EE9751700DE4334 /* NFCTableViewController.swift */; };
 		DBB2ED381EF1D8BD009B093E /* RFIDTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB2ED371EF1D8AC009B093E /* RFIDTableViewController.swift */; };
 		DBCADE2A1EEEA810004488FE /* NFCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCADE291EEEA810004488FE /* NFCTableViewCell.swift */; };
@@ -28,6 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		09492F211FCCF1B800239A23 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		09492F231FCCF1CD00239A23 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		DB856C3C1EE9741D00DE4334 /* NFC-Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "NFC-Example.entitlements"; sourceTree = "<group>"; };
 		DB856C3D1EE9751700DE4334 /* NFCTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCTableViewController.swift; sourceTree = "<group>"; };
 		DBB2ED371EF1D8AC009B093E /* RFIDTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFIDTableViewController.swift; sourceTree = "<group>"; };
@@ -48,6 +52,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09492F241FCCF1CD00239A23 /* SwiftyJSON.framework in Frameworks */,
+				09492F221FCCF1B800239A23 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +130,8 @@
 		DBE74F741EE940A300535D1D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				09492F231FCCF1CD00239A23 /* SwiftyJSON.framework */,
+				09492F211FCCF1B800239A23 /* Alamofire.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -138,6 +146,7 @@
 				DBE74F4D1EE9409700535D1D /* Sources */,
 				DBE74F4E1EE9409700535D1D /* Frameworks */,
 				DBE74F4F1EE9409700535D1D /* Resources */,
+				09492F251FCCF1FC00239A23 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -178,7 +187,7 @@
 				TargetAttributes = {
 					DBE74F501EE9409700535D1D = {
 						CreatedOnToolsVersion = 9.0;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
 								enabled = 0;
@@ -235,6 +244,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		09492F251FCCF1FC00239A23 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/bin/sh\n/usr/local/bin/carthage copy-frameworks\n/usr/local/bin/carthage copy-frameworks\n/usr/local/bin/carthage copy-frameworks\n/user/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DBE74F4D1EE9409700535D1D /* Sources */ = {
@@ -398,16 +425,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "NFC-Example/NFC-Example.entitlements";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 6K4KHD4NQF;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 477X77MUMT;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "NFC-Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.hansknoechel.nfctest;
+				PRODUCT_BUNDLE_IDENTIFIER = org.GreenGamificationUsingNFC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "fa0174cf-62bb-4af9-857c-b8b30992fa55";
-				PROVISIONING_PROFILE_SPECIFIER = "NFC Example DEV";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -416,16 +448,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "NFC-Example/NFC-Example.entitlements";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 6K4KHD4NQF;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 477X77MUMT;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "NFC-Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.hansknoechel.nfctest;
+				PRODUCT_BUNDLE_IDENTIFIER = org.GreenGamificationUsingNFC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "fa0174cf-62bb-4af9-857c-b8b30992fa55";
-				PROVISIONING_PROFILE_SPECIFIER = "NFC Example DEV";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
